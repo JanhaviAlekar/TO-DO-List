@@ -1,0 +1,23 @@
+<%-include("header") %>
+  <div class="box" id="heading">
+    <h1><%= listTitle %> </h1>
+  </div>
+  <form action="/delete" method="post">
+   <div class="box">
+   
+    <% itemsNew.forEach(function(item){%>
+      <div class="item">
+        <input type="checkbox" name="checkBox" value="<%=item._id%>"onChange="this.form.submit()">
+      <p><%=item.name %></p>
+    </div>
+      <% })%>
+      <!-- if we delete we redi to main in order to change we need to pass list name to delete rute -->
+    <input type="hidden" name="listName" value=<%=listTitle%>></input>
+    </form>
+    <form action="/" method="post">
+      <input type="text" name="itemList" placeholder="new item">
+      <button type="submit" name="list"  value=<%=listTitle%>> + </button>
+    </form>
+  </div>
+
+<%-include("footer") %>
